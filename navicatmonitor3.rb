@@ -4,8 +4,6 @@ class Navicatmonitor3 < Formula
   url "https://navicat-download.oss-us-east-1.aliyuncs.com/monitor3-download/homebrew/navicat-monitor_3.0.0.3.tar.gz"
   sha256 "1ad5ac25557c54d202a36da447be5f2bb057a4c53b9e71c7a45a322d6f5844a2"
 
-  bottle :unneeded
-
   def install
     # Preload
     system "./install.sh"
