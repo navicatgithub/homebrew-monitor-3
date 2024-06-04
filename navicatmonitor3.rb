@@ -23,32 +23,9 @@ class Navicatmonitor3 < Formula
     mv "#{bin}/wrapper", "#{bin}/navicatmonitor"
   end
 
-  plist_options :startup => "true"
-
-  def plist; <<~EOS
-    <?xml version="1.0" encoding="UTF-8"?>
-    <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-    <plist version="1.0">
-    <dict>
-      <key>KeepAlive</key>
-      <dict>
-        <key>Crashed</key>
-        <true/>
-      </dict>
-      <key>Label</key>
-      <string>#{plist_name}</string>
-      <key>ProgramArguments</key>
-      <array>
-        <string>#{libexec}/wrapper</string>
-        <string>start</string>
-      </array>
-      <key>RunAtLoad</key>
-      <true/>
-      <key>WorkingDirectory</key>
-      <string>#{libexec}</string>
-    </dict>
-    </plist>
-    EOS
+  service do
+    run [libexec/"wrapper start"]
+    working_dir libexec
   end
 
   test do
